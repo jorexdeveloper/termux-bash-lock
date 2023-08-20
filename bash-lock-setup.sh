@@ -1,7 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 ################################################################################
+#                                                                              #
 #     Bash Lock. version 1.0                                                   #
+#                                                                              #
 #     Set up a login password for Bash. (for Termux)                           #
 #                                                                              #
 #     Copyright (C) 2023  Jore                                                 #
@@ -18,6 +20,7 @@
 #                                                                              #
 #     You should have received a copy of the GNU General Public License        #
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.   #
+#                                                                              #
 ################################################################################
 
 ################################################################################
@@ -246,7 +249,7 @@ _del_passwd() {
 _print_help() {
 	printf "${CYAN}Usage: ${YELLOW}$(basename $0) OPTION${RESET}\n"
 	printf "${CYAN}Set up a login password for Bash. (for Termux)${CYAN}${RESET}\n"
-	printf "${CYAN}${RESET}\n"
+	printf "\n"
 	printf "${CYAN}Options:${RESET}\n"
 	printf "${CYAN}  -s, --set${RESET}\n"
 	printf "${CYAN}          Set new password.${RESET}\n"
@@ -256,6 +259,8 @@ _print_help() {
 	printf "${CYAN}          Print this message and exit.${RESET}\n"
 	printf "${CYAN}  -v. --version${RESET}\n"
 	printf "${CYAN}          Print version and exit${RESET}\n"
+	printf "\n"
+	printf "${CYAN}After setting a password, use ${YELLOW}$(basename ${LOCK_COMMAND})${CYAN} command to lock the shell any time.${RESET}\n"
 }
 
 _print_version() {
