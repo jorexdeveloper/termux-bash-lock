@@ -18,4 +18,4 @@ The program displays help information to guide you further.
 
 |  |  |
 |--|--|
-|![img](./Screenshots/01.png)|![img](./Screenshots/02.png)|
+|![img](./Screenshots/1.png)|![img](./Screenshots/2.png)|
