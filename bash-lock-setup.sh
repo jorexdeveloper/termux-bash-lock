@@ -1,20 +1,29 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 ################################################################################
-#                           BASH LOCK SET UP SCRIPT                            #
-#                                 author Jore                                  #
-#                                 version 1.0                                  #
+#     Bash Lock. version 1.0                                                   #
+#     Set up a login password for Bash. (for Termux)                           #
 #                                                                              #
+#     Copyright (C) 2023  Jore                                                 #
+#                                                                              #
+#     This program is free software: you can redistribute it and/or modify     #
+#     it under the terms of the GNU General Public License as published by     #
+#     the Free Software Foundation, either version 3 of the License, or        #
+#     (at your option) any later version.                                      #
+#                                                                              #
+#     This program is distributed in the hope that it will be useful,          #
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of           #
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #
+#     GNU General Public License for more details.                             #
+#                                                                              #
+#     You should have received a copy of the GNU General Public License        #
+#     along with this program.  If not, see <https://www.gnu.org/licenses/>.   #
 ################################################################################
 
 ################################################################################
 #                                FUNCTIONS                                     #
 ################################################################################
 
-# Asks Y/N question and returns response as 0/1
-# ARG1 (question to be asked) ARG2 (default value. (Y/N))
-# Asks 3 times, then returns default value or
-# Continues to ask if no default supplied.
 _ask() {
 	# Set prompt depending on default value
 	if [ "${2:-}" = "Y" ]; then
@@ -57,7 +66,7 @@ _ask() {
 }
 
 _reset_line() {
-	printf "\r                                            \r"
+	printf "\r                                      \r"
 }
 
 _set_passwd() {
@@ -140,7 +149,7 @@ _set_passwd() {
 					}
 
 					_reset_line() {
-						printf "\r                                            \r"
+						printf "\r                                  \r"
 					}
 
 					_check_pass() {
@@ -222,7 +231,7 @@ _del_passwd() {
 
 _print_help() {
 	printf "${CYAN}Usage: ${YELLOW}$(basename $0) OPTION${RESET}\n"
-	printf "${CYAN}Set up a password for bash login.${CYAN}${RESET}\n"
+	printf "${CYAN}Set up a login password for Bash. (for Termux)${CYAN}${RESET}\n"
 	printf "${CYAN}${RESET}\n"
 	printf "${CYAN}Options:${RESET}\n"
 	printf "${CYAN}  -s, --set${RESET}\n"
@@ -236,8 +245,8 @@ _print_help() {
 }
 
 _print_version() {
-	printf "${YELLOW}Bash Lock Script${CYAN} by Jore, version ${VERSION}${RESET}\n"
-	printf "${CYAN}Copyright (C) 2022 Free Software Foundation, Inc.${RESET}\n"
+	printf "${YELLOW}Bash Lock${CYAN}, version ${VERSION}${RESET}\n"
+	printf "${CYAN}Copyright (C) 2023  Jore${RESET}\n"
 	printf "${CYAN}License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>${RESET}\n"
 	printf "\n"
 	printf "${CYAN}This is free software; you are free to change and redistribute it.${RESET}\n"
@@ -281,4 +290,5 @@ if [ -n "$1" ]; then
 else
 	_print_help
 fi
+
 unset RED GREEN YELLOW CYAN RESET ALGORITHM PASSWD_LENGTH LOCK_SCRIPT VERSION
