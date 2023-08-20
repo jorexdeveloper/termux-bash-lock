@@ -2,7 +2,7 @@
 
 Set a login password for Bash.
 
-> **NOTE:** This script was made for **Termux** and may not work properly for other systems, use with caution.
+**NOTE:** This script was made for **Termux** and may not work properly for other systems, use with caution.
 
 ## INSTALLATION
 
