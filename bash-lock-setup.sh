@@ -85,7 +85,7 @@ _set_passwd() {
 	# Confirm execution code in login script
 	# DON'T REMOVE OR CHANGE THE COMMENT (it is used here and in _del_passwd)
 	grep -q "# EXECUTE BASH LOCK BY JORE" ${LOGIN_SCRIPT} || {
-		cp "${LOGIN_SCRIPT}" "${LOGIN_SCRIPT}~" && sed -i "2i\# EXECUTE BASH LOCK BY JORE\nif [ -f \"${LOCK_SCRIPT}\" ]; then\n\tbash \"${LOCK_SCRIPT}\" || exit 1\nfi" ${LOGIN_SCRIPT}
+		cp "${LOGIN_SCRIPT}" "${LOGIN_SCRIPT}~" && sed -i "2i\# EXECUTE BASH LOCK BY JORE\nif [ -f \"${LOCK_SCRIPT}\" ]; then\n\t bash \"${LOCK_SCRIPT}\" && clear || exit 1\nfi" ${LOGIN_SCRIPT}
 	} || {
 		printf "${RED}[${YELLOW}!${RED}] Failed to set password.${RESET}\n"
 		return 1
