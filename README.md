@@ -14,7 +14,7 @@ apt update -y && apt upgrade -y && apt install wget -y && wget https://raw.githu
 
 The program displays help information to guide you further.
 
-## Screenshots
+## SCREENSHOTS
 
 |  |  |
 |--|--|
