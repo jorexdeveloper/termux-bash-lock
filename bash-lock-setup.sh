@@ -264,7 +264,7 @@ YELLOW="\e[1;33m"
 CYAN="\e[1;36m"
 RESET="\e[0m"
 ALGORITHM=512
-PASSWD_LENGTH=1
+PASSWD_LENGTH=8
 LOGIN_SCRIPT="${PREFIX}/bin/login"
 LOCK_SCRIPT="${PREFIX}/bin/applets/bash-lock.sh"
 
