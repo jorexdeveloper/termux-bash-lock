@@ -81,7 +81,9 @@ _set_passwd() {
 	fi
 	# Confirm execution code in login script
 	# DON'T REMOVE OR CHANGE THE COMMENT (it is used here and in _del_passwd)
-	grep -q "# EXECUTE BASH LOCK BY JORE" ${LOGIN_SCRIPT} || cp "${LOGIN_SCRIPT}" "${LOGIN_SCRIPT}~" && sed -i "2i\# EXECUTE BASH LOCK BY JORE\nif [ -f \"${LOCK_SCRIPT}\" ]; then\n\tbash \"${LOCK_SCRIPT}\" || exit 1\nfi" ${LOGIN_SCRIPT} || {
+	grep -q "# EXECUTE BASH LOCK BY JORE" ${LOGIN_SCRIPT} || {
+		cp "${LOGIN_SCRIPT}" "${LOGIN_SCRIPT}~" && sed -i "2i\# EXECUTE BASH LOCK BY JORE\nif [ -f \"${LOCK_SCRIPT}\" ]; then\n\tbash \"${LOCK_SCRIPT}\" || exit 1\nfi" ${LOGIN_SCRIPT}
+	} || {
 		printf "${RED}[${YELLOW}!${RED}] Failed to set password.${RESET}\n"
 		return 1
 	}
@@ -193,7 +195,15 @@ _set_passwd() {
 					_check_pass || exit 1
 					unset ALGORITHM PASSWD_LENGTH PASSWD_SHA RED GREEN YELLOW CYAN RESET
 				EOF
-			} && chmod 700 ${LOCK_SCRIPT} && _reset_line && printf "${GREEN}[${YELLOW}=${GREEN}] Password set succesfully.${RESET}\n"
+			} && chmod 700 ${LOCK_SCRIPT} && {
+				cat > ${LOCK_COMMAND} <<- EOF
+					if [ -f ${LOCK_SCRIPT} ]; then
+						bash ${LOCK_SCRIPT} && clear || kill -9 \$PPID
+					else
+						printf "\n${CYAN}[${YELLOW}!${CYAN}] No password set. Use ${YELLOW}bash-lock-setup.sh --set${CYAN} --set to set a password.${RESET}\n"
+					fi
+				EOF
+			} && chmod 700 ${LOCK_COMMAND} && _reset_line && printf "${GREEN}[${YELLOW}=${GREEN}] Password set succesfully.${RESET}\n"
 			break
 		else
 			((retries--))
@@ -214,6 +224,10 @@ _del_passwd() {
 			rm -f ${LOCK_SCRIPT} && {
 				# Remove execution code if it exists
 				grep -q "# EXECUTE BASH LOCK BY JORE" ${LOGIN_SCRIPT} && sed -i '/# EXECUTE BASH LOCK BY JORE/{N;N;N;d;}' ${LOGIN_SCRIPT}
+			} && {
+				if [ -f ${LOCK_COMMAND} ]; then
+					rm -f ${LOCK_COMMAND}
+				fi
 			} && {
 				_reset_line && printf "${GREEN}[${YELLOW}=${GREEN}] Password cleared succesfully.${RESET}\n"
 				return 0
@@ -265,6 +279,7 @@ CYAN="\e[1;36m"
 RESET="\e[0m"
 ALGORITHM=512
 PASSWD_LENGTH=8
+LOCK_COMMAND="${PREFIX}/bin/lock"
 LOGIN_SCRIPT="${PREFIX}/bin/login"
 LOCK_SCRIPT="${PREFIX}/bin/applets/bash-lock.sh"
 
