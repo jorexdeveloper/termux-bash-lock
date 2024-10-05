@@ -33,9 +33,10 @@ After setting a password, use lock command to lock the shell any time.
 
 ## SCREENSHOTS
 
-|  |  |
-|--|--|
-|![img](./Screenshots/1.png)|![img](./Screenshots/2.png)|
+<div style="overflow-x: auto; white-space: nowrap; text-align: center;">
+  <img src="./Screenshots/2.png" width="300" height="600" style="margin: 5px;">
+  <img src="./Screenshots/1.png" width="300" height="600" style="margin: 5px;">
+</div>
 
 ### LICENSE
 
