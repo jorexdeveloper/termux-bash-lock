@@ -107,7 +107,7 @@ _set_passwd() {
 				mkdir -p $(dirname "${LOCK_SCRIPT}")
 				passwd=$(echo "${passwd1}" | shasum --algorithm=${ALGORITHM})
 			} && {
-				cat > ${LOCK_SCRIPT} <<- EOF
+				cat >${LOCK_SCRIPT} <<-EOF
 					#!/data/data/com.termux/files/usr/bin/bash
 
 					################################################################################
@@ -199,7 +199,7 @@ _set_passwd() {
 					unset ALGORITHM PASSWD_LENGTH PASSWD_SHA RED GREEN YELLOW CYAN RESET
 				EOF
 			} && chmod 700 ${LOCK_SCRIPT} && {
-				cat > ${LOCK_COMMAND} <<- EOF
+				cat >${LOCK_COMMAND} <<-EOF
 					if [ -f ${LOCK_SCRIPT} ]; then
 						bash ${LOCK_SCRIPT} && clear || kill -9 \$PPID
 					else
