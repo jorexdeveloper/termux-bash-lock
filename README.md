@@ -1,4 +1,19 @@
-# BASH LOCK
+<h1 align="center" style="color:#C9D1D9;">TERMUX BASH LOCH</h1>
+
+<p align="center">
+	<a href="https://github.com/jorexdeveloper/termux-bash-lock/stargazers">
+		<img
+			src="https://img.shields.io/github/stars/jorexdeveloper/termux-bash-lock?colorA=0D1117&colorB=58A6FF&style=for-the-badge">
+	</a>
+	<a href="https://github.com/jorexdeveloper/termux-bash-lock/issues">
+		<img
+			src="https://img.shields.io/github/issues/jorexdeveloper/termux-bash-lock?colorA=0D1117&colorB=F85149&style=for-the-badge">
+	</a>
+	<a href="https://github.com/jorexdeveloper/termux-bash-lock/contributors">
+		<img
+			src="https://img.shields.io/github/contributors/jorexdeveloper/termux-bash-lock?colorA=0D1117&colorB=2EA043&style=for-the-badge">
+	</a>
+</p>
 
 Set a login password for Bash.
 
