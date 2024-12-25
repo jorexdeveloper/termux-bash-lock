@@ -1,4 +1,4 @@
-<h1 align="center" style="color:#C9D1D9;">TERMUX BASH LOCH</h1>
+<h1 align="center" style="color:#C9D1D9;">TERMUX BASH LOCK</h1>
 
 <p align="center">
 	<a href="https://github.com/jorexdeveloper/termux-bash-lock/stargazers">
